@@ -1,0 +1,22 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/lib/jhall.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/jibx-run.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/jadex_rt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/jadex_tools.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/xmlpull_1_1_4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/bcel.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/xpp3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/GraphLayout.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/jadex_examples.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/jibx-bind.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/jibx-extras.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/jadex_standalone.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/janino.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/nuggets.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
