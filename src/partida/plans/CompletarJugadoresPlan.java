@@ -27,11 +27,9 @@ public class CompletarJugadoresPlan extends Plan
 		busqueda.getParameter("constraints").setValue(sc);
 		dispatchSubgoalAndWait(busqueda);
 		AgentDescription[] result =(AgentDescription[])busqueda.getParameterSet("result").getValues();
-		int numjugscasa= result.length;
-		//int numJugadoresEnPartida = Integer.parseInt(getBeliefbase().getBelief("jugador").getFact().toString());
-		System.out.println(numjugscasa+" jugadores casa encontrados, requeridos 6");
-		//getBeliefbase().getBelief("jugadores_en_partida").setFact(++numJugadoresEnPartida);
-		//getBeliefbase().getBelief("agresivo").setFact(numjugscasa);
+		int numJugs= result.length;
+		System.out.println(numJugs+" jugadores casa encontrados, requeridos 6");
+		getBeliefbase().getBelief("jugador").setFact(numJugs);
 	}
 
 }
