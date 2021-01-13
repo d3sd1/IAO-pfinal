@@ -26,6 +26,12 @@
 	</goals>
 
 	<configurations>
+		<configuration name="default">
+			<goals><initialgoal ref="df_register">
+				<parameter ref="description"> <value>
+					SFipa.createAgentDescription(null,SFipa.createServiceDescription("jugador","", null))</value></parameter>
+			</initialgoal></goals>
+		</configuration>
 
 	</configurations>
 	
