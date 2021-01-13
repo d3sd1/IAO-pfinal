@@ -7,6 +7,7 @@
 	package="src.jugador">
 
 	<imports>
+		<import>jugador.plans.*</import>
 		<import>jadex.runtime.*</import>
 		<import>jadex.planlib.*</import>
 		<import>jadex.util.*</import>
@@ -23,17 +24,55 @@
 		<achievegoalref name="df_register">
 			<concrete ref="dfcap.df_register"/>
 		</achievegoalref>
+
+		<achievegoalref name="df_search">
+			<concrete ref="dfcap.df_search"/>
+		</achievegoalref>
 	</goals>
+
+	<plans>
+		<!-- Plan to play a single game. -->
+		<plan name="play_game_round_plan">
+			<body class="PlayerPlayGameRoundPlan" />
+			<trigger>
+				<messageevent ref="play_round_req"/>
+			</trigger>
+			<!--<precondition> $event.sender.equals($beliefbase.partida)</precondition> - TODO añadir mas preconds -->
+		<!-- <body>new PlayerPlayGameRoundPlan()</body> -->
+			<!--<trigger>
+				<messageevent ref="request_bet"/>
+			</trigger>
+			<precondition> $event.sender.equals($beliefbase.dealer)
+				&amp;&amp; $beliefbase.myself.getAccount()>0</precondition>-->
+		</plan>
+	</plans>
+
+
+	<events>
+	<!-- Dealer queries for players bet. -->
+	<messageevent name="play_round_req" direction="receive" type="fipa">
+		<parameter name="performative" class="String" direction="fixed">
+			<value>SFipa.REQUEST</value>
+		</parameter>
+		<parameter name="language" class="String" direction="fixed">
+			<value>SFipa.NUGGETS_XML</value>
+		</parameter>
+		<parameter name="content-class" class="Class" direction="fixed">
+			<value>RequestBet.class</value>
+		</parameter>
+	</messageevent>
+	</events>
 
 	<configurations>
 		<configuration name="default">
 			<goals><initialgoal ref="df_register">
 				<parameter ref="description"> <value>
 					SFipa.createAgentDescription(null,SFipa.createServiceDescription("jugador","", null))</value></parameter>
-			</initialgoal></goals>
+			</initialgoal>
+			</goals>
 		</configuration>
 
 	</configurations>
-	
+
 </agent>
 

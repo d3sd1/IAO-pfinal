@@ -6,7 +6,7 @@
 	package="src.partida">
 
 	<imports>
-		<import>partida.beliefs.*</import>
+		<import>partida.beliefs.Mapa</import>
 		<import>partida.plans.*</import>
 		<import>jadex.runtime.*</import>
 		<import>jadex.planlib.*</import>
@@ -22,6 +22,7 @@
 
 	<beliefs>
 		<belief name="jugador" class="int"/>
+		<belief name="mapa" class="Mapa"/>
 	</beliefs>
 
 	<goals>
@@ -29,25 +30,26 @@
 			<concrete ref="dfcap.df_search"/>
 		</achievegoalref>
 		<performgoal name="completar_jugadores" recur="true" recurdelay="2000">
-			<contextcondition>$beliefbase.jugador &lt; 6</contextcondition>
+			<contextcondition>($beliefbase.jugador &lt; 1) || ($beliefbase.mapa == null)</contextcondition>
 		</performgoal>
 		<achievegoal name="comienza_partido">
 			<creationcondition>
-				$beliefbase.jugador >= 6
+				$beliefbase.jugador >= 1 &amp;&amp; ($beliefbase.mapa != null)
 			</creationcondition> 
 		</achievegoal>
 	</goals>
-		
 	<plans>
-		<plan name="CompletarJugadoresPlan">
-			<body class="CompletarJugadoresPlan" />
-			<trigger> <goal ref="completar_jugadores"/> </trigger>
+		<plan name="ConfigurarJugadoresPlan">
+			<body class="ConfigurarJugadoresPlan" />
+			<trigger> <goal ref="configurar_jugadores"/> </trigger>
 		</plan>
 		<plan name="comienza_partido_plan">
 			<body class="ComienzaPartidoPlan" />
 			<trigger><goal ref="comienza_partido"/></trigger>
 		</plan>
 	</plans>
+
+
 
 	<configurations>
 		<configuration name="default">
@@ -57,7 +59,7 @@
 			</initialbelief>
 		</beliefs>
 		<goals>
-			<initialgoal ref="completar_jugadores"></initialgoal>
+			<initialgoal ref="configurar_jugadores"></initialgoal>
 		</goals>
 		</configuration>
 	</configurations>

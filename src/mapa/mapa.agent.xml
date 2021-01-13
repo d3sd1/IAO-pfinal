@@ -1,0 +1,51 @@
+<agent xmlns="http://jadex.sourceforge.net/jadex"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jadex.sourceforge.net/jadex 
+	                    http://jadex.sourceforge.net/jadex-0.96.xsd"
+	name="mapa"
+	package="src.mapa">
+
+	<imports>
+		<import>mapa.plans.*</import>
+		<import>jadex.runtime.*</import>
+		<import>jadex.planlib.*</import>
+		<import>jadex.util.*</import>
+		<import>jadex.adapter.fipa.*</import>
+		<import>java.util.logging.*</import>
+		<import>java.util.*</import>
+	</imports>
+	
+	<capabilities>
+		<capability name="dfcap" file="jadex.planlib.DF"/>
+	</capabilities>
+
+	<beliefs>
+		<belief name="map_size" class="int"/>
+	</beliefs>
+	<configurations>
+		<configuration name="mapa_5x5">
+			<beliefs>
+				<initialbelief ref="map_size">
+					<fact>5</fact>
+				</initialbelief>
+			</beliefs>
+		</configuration>
+		<configuration name="mapa_10x10">
+			<beliefs>
+				<initialbelief ref="map_size">
+					<fact>10</fact>
+				</initialbelief>
+			</beliefs>
+		</configuration>
+		<configuration name="mapa_20x20">
+			<beliefs>
+				<initialbelief ref="map_size">
+					<fact>20</fact>
+				</initialbelief>
+			</beliefs>
+		</configuration>
+	</configurations>
+
+	
+</agent>
+
